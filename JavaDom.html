@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Workshop</title>
+	<style>
+		form input{
+			margin-bottom: 100px
+		}
+	</style>
+</head>
+<body>
+
+<form name="workshop">
+	<label for="date">Date:</Label><br>
+	<input id="date" type="text" name="date" placeholder="MM/DD/YYYY"><br>
+	<label for="username">Username:</label><br>
+	<input id="username" type="text" name="username"><br>
+	<label for="passWord">Password:</label><br>
+	<input id="password" type="password" name="psw"><br>
+	<input id="submit" type="submit" value="Submit"><br>
+	<h1 id="output"></h1><br>
+	<input id="datatype" type="text" oninput="checkData()" name="datatype"><br>
+</form>
+
+
+<script>
+	var	dateField=document.getElementById('date');
+	var	userField=document.getElementById('username');
+	var	pwdField=document.getElementById('password');
+	var	submitButton=document.getElementById('submit');
+	var dataType=document.getElementById('datatype')
+	
+	function dateValidation(){	
+		var a = dateField.value;
+		var b = a.split("/");
+		var month = b[0];
+		var day = b[1];
+		var year = b[2];
+
+
+
+		if (isNaN(month) || isNaN(day) || isNaN(year) ){
+			 alert("please Insert Valid Date")
+		}
+
+		if (month < 0 || month > 12){
+			alert("Please Insert A Correct Month, between 1 and 12")
+		}
+
+		if ( day < 0 || day > 31) {
+			alert("Please Insert A Correct Date, between 1 and 31")
+		}
+
+		if ( year < 0 || year > 2016) {
+			alert("Please Insert A Correct Year , between 1 and 2016")
+		}
+	}
+	
+	function usernameValidation(){
+		var e = userField.value;
+		if (e.length == 0){
+			alert("Please Insert Username")
+		}
+	}
+	
+	function passwordValidation(){
+		var d = pwdField.value;
+		if ( d != 12345) {
+			alert("Password is incorrect")
+		}
+	}
+
+	submitButton.onclick = function(){
+		dateValidation();
+		usernameValidation();
+		passwordValidation();
+	}
+ 	
+	
+	function checkData(){
+
+		if (isNaN(dataType.value)){	
+			document.getElementById('output').innerHTML = "<h1>This is a Letter or Charecter</h1>"
+	 } 	else {
+			document.getElementById('output').innerHTML = "<h1>This is a Number</h1>"
+		}
+	}
+</script>
+
+</body> 
+
+</html>
