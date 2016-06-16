@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Digital Clock</title>
+	<style>
+		body{
+			background-color: black;
+		}
+		
+		h2{
+			text-align: center;
+		}
+
+		#clock{
+			size: 60px;
+		}
+
+		h1{
+			text-align: center;
+		}
+
+		.center{
+			color: white;
+			position: fixed;
+			top:50%;
+			left:50%;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+
+
+</head>
+<body onload="continuous()">
+	<script>
+
+		function continuous(){
+			setInterval(digitalClock,1);
+		}
+
+		function digitalClock(){
+			var currentTime = new Date ();
+			var timePeriod = "AM"
+			var currentHours = currentTime.getHours ( );
+  			var currentMinutes = currentTime.getMinutes ( );
+  			var currentSeconds = currentTime.getSeconds ( );
+  			var currentMilliseconds = currentTime.getMilliseconds();
+
+  			if (currentHours == 0) {
+  				currentHours = 12
+				} if (currentHours > 12 ){
+					currentHours = currentHours - 12 ;
+					timePeriod = "PM";
+				} if (currentHours < 10){
+					currentHours = "0" + currentHours;
+				}
+			
+
+			if (currentMinutes < 10 ) {
+				
+				 currentMinutes = "0" + currentMinutes;
+			}
+
+			if (currentSeconds < 10 ) {
+				
+				currentSeconds = "0" + currentSeconds;
+			}
+
+			if (currentMilliseconds < 10 ) {
+				
+				currentMilliseconds = "0" + "0" + currentMilliseconds;
+			}
+
+			if (currentMilliseconds >= 10 && currentMilliseconds < 100 ) {
+				
+				currentMilliseconds = "0" + currentMilliseconds;
+			}
+			
+  			document.getElementById('clock').innerHTML=timePeriod+"    "+currentHours+" : "+currentMinutes+" : "+currentSeconds+" : "+currentMilliseconds;
+		}
+
+	
+	</script>
+
+	<div class="center">
+		<h2>The Current Time is</h2>
+
+		<h1 id="clock"></h1>
+	</div>
+
+</body>
+</html>

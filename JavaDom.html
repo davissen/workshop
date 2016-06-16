@@ -79,7 +79,7 @@
 	
 	function checkData(){
 
-		if (isNaN(dataType.value)){	
+		if (! ( isNaN(dataType.value) ) ) {	
 			document.getElementById('output').innerHTML = "<h1>This is a Letter or Charecter</h1>"
 	 } 	else {
 			document.getElementById('output').innerHTML = "<h1>This is a Number</h1>"
